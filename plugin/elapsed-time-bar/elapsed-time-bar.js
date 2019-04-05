@@ -68,8 +68,20 @@ var ElapsedTimeBar = {
     });
     timeProgressContainer.appendChild(this.timeProgressBar);
 
-    // start timer
-    this.start(config.allottedTime);
+    document.body.addEventListener('keydown', function(e) {
+      if (e.keyCode === 192) { // the '~' key
+        window.sessionStorage.setItem('elapsedTimeStart', Date.now());
+        window.location.reload();
+      }
+    });
+
+    var elapsedTimeStart = sessionStorage.getItem('elapsedTimeStart');
+    if (elapsedTimeStart) {
+      this.start(config.allottedTime, Date.now() - elapsedTimeStart);
+    }
+    else {
+      this.start(config.allottedTime);
+    }
   },
 
   /**

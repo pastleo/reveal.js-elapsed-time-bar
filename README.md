@@ -83,6 +83,9 @@ Reveal.initialize({
 });
 ```
 
+# Set allotted start time
+
+press `~` to mark your talk start time
 
 # License
 
